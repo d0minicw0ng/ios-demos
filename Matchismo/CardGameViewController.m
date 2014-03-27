@@ -16,9 +16,20 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeControl;
 @end
 
 @implementation CardGameViewController
+- (IBAction)switchGameMode:(id)sender {
+    if (_gameModeControl.selectedSegmentIndex == 0){
+        [_game setThreeCardMatch:NO];
+    } else if (_gameModeControl.selectedSegmentIndex == 1) {
+        [_game setThreeCardMatch:YES];
+    }
+    // NOTE: How to trigger resetGame programmatically?
+    _game = nil;
+    [self updateUI];
+}
 
 - (IBAction)resetGame:(UIButton *)sender {
     _game = nil;

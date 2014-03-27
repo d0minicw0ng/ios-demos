@@ -63,18 +63,42 @@ static const int COST_TO_CHOOSE = 1;
             card.chosen = NO;
         } else {
             // match against another card
-            for (Card *otherCard in self.cards) {
-                if (otherCard.isChosen && !otherCard.isMatched) {
-                    int matchScore = [card match:@[otherCard]];
+            if (!self.threeCardMatch) {
+                for (Card *otherCard in self.cards) {
+                    if (otherCard.isChosen && !otherCard.isMatched) {
+                        int matchScore = [card match:@[otherCard]];
+                        if (matchScore) {
+                            self.score += matchScore * MATCH_BONUS;
+                            card.matched = true;
+                            otherCard.matched = true;
+                        } else {
+                            self.score -= MISMATCH_PENALTY;
+                            otherCard.chosen = NO;
+                        }
+                        break;
+                    }
+                }
+            } else {
+                NSMutableArray *otherCards = [[NSMutableArray alloc] init];
+                for (Card *otherCard in self.cards) {
+                    if (otherCard.isChosen && !otherCard.isMatched) {
+                        [otherCards addObject:otherCard];
+                    }
+                }
+                if (otherCards.count == 2) {
+                    int matchScore = [card match:otherCards];
                     if (matchScore) {
                         self.score += matchScore * MATCH_BONUS;
                         card.matched = true;
-                        otherCard.matched = true;
+                        for (Card *otherCard in otherCards) {
+                            otherCard.matched = true;
+                        }
                     } else {
                         self.score -= MISMATCH_PENALTY;
-                        otherCard.chosen = NO;
+                        for (Card *otherCard in otherCards) {
+                            otherCard.chosen = NO;
+                        }
                     }
-                    break;
                 }
             }
             self.score -= COST_TO_CHOOSE;
