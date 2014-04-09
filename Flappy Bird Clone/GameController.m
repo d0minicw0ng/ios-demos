@@ -17,8 +17,34 @@
 -(IBAction)StartGame:(id)sender
 {
     StartGame.hidden = YES;
+    TunnelTop.hidden = NO;
+    TunnelBottom.hidden = NO;
+    
     BirdMovement = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(BirdMoving)
                                                    userInfo:nil repeats:YES];
+    
+    TunnelMovement = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(TunnelMoving) userInfo:nil repeats:YES];
+    [self PlaceTunnels];
+}
+
+-(void)PlaceTunnels
+{
+    RandomTopTunnelPosition = arc4random() %350;
+    RandomTopTunnelPosition = RandomTopTunnelPosition - 228;
+    RandomBottomTunnelPosition = RandomTopTunnelPosition + 655;
+    
+    TunnelTop.center = CGPointMake(340, RandomTopTunnelPosition);
+    TunnelBottom.center = CGPointMake(340, RandomBottomTunnelPosition);
+}
+
+-(void)TunnelMoving
+{
+    TunnelTop.center = CGPointMake(TunnelTop.center.x - 1, TunnelTop.center.y);
+    TunnelBottom.center = CGPointMake(TunnelBottom.center.x - 1, TunnelBottom.center.y);
+
+    if (TunnelTop.center.x < -28) {
+        [self PlaceTunnels];
+    }
 }
 
 -(void)BirdMoving
@@ -54,6 +80,9 @@
 
 - (void)viewDidLoad
 {
+    TunnelTop.hidden = YES;
+    TunnelBottom.hidden = YES;
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

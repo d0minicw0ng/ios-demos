@@ -26,6 +26,8 @@
 		523D3A2618F4509E00B620F2 /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 523D3A2218F4509E00B620F2 /* bird.png */; };
 		523D3A2718F4509E00B620F2 /* tunnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 523D3A2318F4509E00B620F2 /* tunnel.png */; };
 		523D3A2D18F4544300B620F2 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D3A2C18F4544300B620F2 /* GameController.m */; };
+		52B57EF118F59C9800ECA585 /* mario_tunnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B57EF018F59C9800ECA585 /* mario_tunnel.png */; };
+		52B57EF318F59ED300ECA585 /* mario_tunnel_inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B57EF218F59ED300ECA585 /* mario_tunnel_inverted.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		523D3A2318F4509E00B620F2 /* tunnel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tunnel.png; sourceTree = "<group>"; };
 		523D3A2B18F4544300B620F2 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		523D3A2C18F4544300B620F2 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
+		52B57EF018F59C9800ECA585 /* mario_tunnel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mario_tunnel.png; sourceTree = "<group>"; };
+		52B57EF218F59ED300ECA585 /* mario_tunnel_inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mario_tunnel_inverted.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 		523D39F218F4501700B620F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				52B57EF018F59C9800ECA585 /* mario_tunnel.png */,
+				52B57EF218F59ED300ECA585 /* mario_tunnel_inverted.png */,
 				523D3A2018F4509E00B620F2 /* background.png */,
 				523D3A2118F4509E00B620F2 /* bird_down.png */,
 				523D3A2218F4509E00B620F2 /* bird.png */,
@@ -245,10 +251,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B57EF118F59C9800ECA585 /* mario_tunnel.png in Resources */,
 				523D3A0418F4501700B620F2 /* Images.xcassets in Resources */,
 				523D3A2418F4509E00B620F2 /* background.png in Resources */,
 				523D39F618F4501700B620F2 /* InfoPlist.strings in Resources */,
 				523D3A2718F4509E00B620F2 /* tunnel.png in Resources */,
+				52B57EF318F59ED300ECA585 /* mario_tunnel_inverted.png in Resources */,
 				523D39FF18F4501700B620F2 /* Main.storyboard in Resources */,
 				523D3A2518F4509E00B620F2 /* bird_down.png in Resources */,
 				523D3A2618F4509E00B620F2 /* bird.png in Resources */,
@@ -478,6 +486,7 @@
 				523D3A1C18F4501800B620F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		523D3A1D18F4501800B620F2 /* Build configuration list for PBXNativeTarget "Flappy Bird CloneTests" */ = {
 			isa = XCConfigurationList;
@@ -486,6 +495,7 @@
 				523D3A1F18F4501800B620F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -92,7 +92,23 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bird.png" translatesAutoresizingMaskIntoConstraints="NO" id="cTB-zf-M1W">
-                                <rect key="frame" x="58" y="249" width="40" height="40"/>
+                                <rect key="frame" x="28" y="264" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mario_tunnel.png" translatesAutoresizingMaskIntoConstraints="NO" id="yDc-hA-VUZ">
+                                <rect key="frame" x="250" y="302" width="50" height="530"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mario_tunnel_inverted.png" translatesAutoresizingMaskIntoConstraints="NO" id="obE-7x-bul">
+                                <rect key="frame" x="250" y="-307" width="50" height="530"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tunnel.png" translatesAutoresizingMaskIntoConstraints="NO" id="zl7-iP-h5B">
+                                <rect key="frame" x="0.0" y="546" width="320" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tunnel.png" translatesAutoresizingMaskIntoConstraints="NO" id="lnQ-ba-yP6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -100,7 +116,11 @@
                     </view>
                     <connections>
                         <outlet property="Bird" destination="cTB-zf-M1W" id="IRr-Vi-9YV"/>
+                        <outlet property="Bottom" destination="zl7-iP-h5B" id="U1q-Qq-fpW"/>
                         <outlet property="StartGame" destination="Y20-3G-8WT" id="6hZ-Uc-pQb"/>
+                        <outlet property="Top" destination="lnQ-ba-yP6" id="dUP-Z5-7cU"/>
+                        <outlet property="TunnelBottom" destination="yDc-hA-VUZ" id="Z4X-2D-xOi"/>
+                        <outlet property="TunnelTop" destination="obE-7x-bul" id="hOB-8k-x3I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KC-v1-61p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -111,6 +131,8 @@
     <resources>
         <image name="background.png" width="320" height="480"/>
         <image name="bird.png" width="40" height="40"/>
+        <image name="mario_tunnel.png" width="100" height="303"/>
+        <image name="mario_tunnel_inverted.png" width="100" height="303"/>
         <image name="tunnel.png" width="50" height="100"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

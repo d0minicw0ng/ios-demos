@@ -9,15 +9,25 @@
 #import <UIKit/UIKit.h>
 
 int BirdFlight;
+int RandomTopTunnelPosition;
+int RandomBottomTunnelPosition;
 
 @interface GameController : UIViewController
 {
     IBOutlet UIImageView *Bird;
     IBOutlet UIButton *StartGame;
+    IBOutlet UIImageView *TunnelTop;
+    IBOutlet UIImageView *TunnelBottom;
+    IBOutlet UIImageView *Top;
+    IBOutlet UIImageView *Bottom;
     
     NSTimer *BirdMovement;
+    NSTimer *TunnelMovement;
 }
 
 -(IBAction)StartGame:(id)sender;
 -(void)BirdMoving;
+-(void)TunnelMoving;
+-(void)PlaceTunnels;
+
 @end
