@@ -19,12 +19,36 @@
     StartGame.hidden = YES;
     TunnelTop.hidden = NO;
     TunnelBottom.hidden = NO;
+    Bird.hidden = NO;
+
     
     BirdMovement = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(BirdMoving)
                                                    userInfo:nil repeats:YES];
     
     TunnelMovement = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(TunnelMoving) userInfo:nil repeats:YES];
+    
     [self PlaceTunnels];
+}
+
+-(void)addScore
+{
+    ScoreNumber = ScoreNumber + 1;
+    ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
+}
+
+-(void)GameOver
+{
+    if (ScoreNumber > HighScoreNumber) {
+        [[NSUserDefaults standardUserDefaults] setInteger:ScoreNumber forKey:@"HighScoreSaved"];
+    }
+    
+    [TunnelMovement invalidate];
+    [BirdMovement invalidate];
+    
+    StartGame.hidden = NO;
+    TunnelTop.hidden = YES;
+    TunnelBottom.hidden = YES;
+    Bird.hidden = YES;
 }
 
 -(void)PlaceTunnels
@@ -45,6 +69,31 @@
     if (TunnelTop.center.x < -28) {
         [self PlaceTunnels];
     }
+    
+    if (TunnelTop.center.x == 30) {
+        [self addScore];
+    }
+    
+    for (UIImageView* obstacle in @[TunnelTop, TunnelBottom, Top, Bottom]) {
+        if (CGRectIntersectsRect(Bird.frame, obstacle.frame)) {
+            [self GameOver];
+        }
+    }
+    //if (CGRectIntersectsRect(Bird.frame, TunnelTop.frame)) {
+    //    [self GameOver];
+    //}
+    
+    //if (CGRectIntersectsRect(Bird.frame, TunnelBottom.frame)) {
+    //    [self GameOver];
+    //}
+    
+    //if (CGRectIntersectsRect(Bird.frame, Top.frame)) {
+    //    [self GameOver];
+    //}
+    
+    //if (CGRectIntersectsRect(Bird.frame, Bottom.frame)) {
+    //    [self GameOver];
+    //}
 }
 
 -(void)BirdMoving
@@ -82,6 +131,9 @@
 {
     TunnelTop.hidden = YES;
     TunnelBottom.hidden = YES;
+    
+    ScoreNumber = 0;
+    HighScoreNumber = [[NSUserDefaults standardUserDefaults] integerForKey:@"HighScoreSaved"];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
