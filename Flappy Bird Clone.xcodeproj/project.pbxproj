@@ -21,13 +21,15 @@
 		523D3A0D18F4501800B620F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523D39EF18F4501700B620F2 /* UIKit.framework */; };
 		523D3A1518F4501800B620F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 523D3A1318F4501800B620F2 /* InfoPlist.strings */; };
 		523D3A1718F4501800B620F2 /* Flappy_Bird_CloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D3A1618F4501800B620F2 /* Flappy_Bird_CloneTests.m */; };
-		523D3A2418F4509E00B620F2 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 523D3A2018F4509E00B620F2 /* background.png */; };
-		523D3A2518F4509E00B620F2 /* bird_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 523D3A2118F4509E00B620F2 /* bird_down.png */; };
-		523D3A2618F4509E00B620F2 /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 523D3A2218F4509E00B620F2 /* bird.png */; };
+		523D3A2418F4509E00B620F2 /* menu_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 523D3A2018F4509E00B620F2 /* menu_background.png */; };
 		523D3A2718F4509E00B620F2 /* tunnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 523D3A2318F4509E00B620F2 /* tunnel.png */; };
 		523D3A2D18F4544300B620F2 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D3A2C18F4544300B620F2 /* GameController.m */; };
 		52B57EF118F59C9800ECA585 /* mario_tunnel.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B57EF018F59C9800ECA585 /* mario_tunnel.png */; };
 		52B57EF318F59ED300ECA585 /* mario_tunnel_inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B57EF218F59ED300ECA585 /* mario_tunnel_inverted.png */; };
+		52B57EF618F5A7BF00ECA585 /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B57EF418F5A7BF00ECA585 /* bird.png */; };
+		52B57EF718F5A7BF00ECA585 /* bird_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B57EF518F5A7BF00ECA585 /* bird_down.png */; };
+		52B57EF918F5A82200ECA585 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B57EF818F5A82200ECA585 /* background.png */; };
+		52B57EFB18F5A86900ECA585 /* flappy_bird.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B57EFA18F5A86900ECA585 /* flappy_bird.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,14 +62,16 @@
 		523D3A1218F4501800B620F2 /* Flappy Bird CloneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Flappy Bird CloneTests-Info.plist"; sourceTree = "<group>"; };
 		523D3A1418F4501800B620F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		523D3A1618F4501800B620F2 /* Flappy_Bird_CloneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Flappy_Bird_CloneTests.m; sourceTree = "<group>"; };
-		523D3A2018F4509E00B620F2 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		523D3A2118F4509E00B620F2 /* bird_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_down.png; sourceTree = "<group>"; };
-		523D3A2218F4509E00B620F2 /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
+		523D3A2018F4509E00B620F2 /* menu_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_background.png; sourceTree = "<group>"; };
 		523D3A2318F4509E00B620F2 /* tunnel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tunnel.png; sourceTree = "<group>"; };
 		523D3A2B18F4544300B620F2 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		523D3A2C18F4544300B620F2 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
 		52B57EF018F59C9800ECA585 /* mario_tunnel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mario_tunnel.png; sourceTree = "<group>"; };
 		52B57EF218F59ED300ECA585 /* mario_tunnel_inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mario_tunnel_inverted.png; sourceTree = "<group>"; };
+		52B57EF418F5A7BF00ECA585 /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
+		52B57EF518F5A7BF00ECA585 /* bird_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_down.png; sourceTree = "<group>"; };
+		52B57EF818F5A82200ECA585 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		52B57EFA18F5A86900ECA585 /* flappy_bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flappy_bird.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,11 +147,13 @@
 		523D39F218F4501700B620F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				52B57EFA18F5A86900ECA585 /* flappy_bird.png */,
+				52B57EF418F5A7BF00ECA585 /* bird.png */,
+				52B57EF518F5A7BF00ECA585 /* bird_down.png */,
 				52B57EF018F59C9800ECA585 /* mario_tunnel.png */,
 				52B57EF218F59ED300ECA585 /* mario_tunnel_inverted.png */,
-				523D3A2018F4509E00B620F2 /* background.png */,
-				523D3A2118F4509E00B620F2 /* bird_down.png */,
-				523D3A2218F4509E00B620F2 /* bird.png */,
+				523D3A2018F4509E00B620F2 /* menu_background.png */,
+				52B57EF818F5A82200ECA585 /* background.png */,
 				523D3A2318F4509E00B620F2 /* tunnel.png */,
 				523D39F318F4501700B620F2 /* Flappy Bird Clone-Info.plist */,
 				523D39F418F4501700B620F2 /* InfoPlist.strings */,
@@ -252,14 +258,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B57EF118F59C9800ECA585 /* mario_tunnel.png in Resources */,
+				52B57EF918F5A82200ECA585 /* background.png in Resources */,
 				523D3A0418F4501700B620F2 /* Images.xcassets in Resources */,
-				523D3A2418F4509E00B620F2 /* background.png in Resources */,
+				523D3A2418F4509E00B620F2 /* menu_background.png in Resources */,
 				523D39F618F4501700B620F2 /* InfoPlist.strings in Resources */,
+				52B57EF618F5A7BF00ECA585 /* bird.png in Resources */,
+				52B57EFB18F5A86900ECA585 /* flappy_bird.png in Resources */,
 				523D3A2718F4509E00B620F2 /* tunnel.png in Resources */,
 				52B57EF318F59ED300ECA585 /* mario_tunnel_inverted.png in Resources */,
+				52B57EF718F5A7BF00ECA585 /* bird_down.png in Resources */,
 				523D39FF18F4501700B620F2 /* Main.storyboard in Resources */,
-				523D3A2518F4509E00B620F2 /* bird_down.png in Resources */,
-				523D3A2618F4509E00B620F2 /* bird.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
