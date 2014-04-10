@@ -79,21 +79,6 @@
             [self GameOver];
         }
     }
-    //if (CGRectIntersectsRect(Bird.frame, TunnelTop.frame)) {
-    //    [self GameOver];
-    //}
-    
-    //if (CGRectIntersectsRect(Bird.frame, TunnelBottom.frame)) {
-    //    [self GameOver];
-    //}
-    
-    //if (CGRectIntersectsRect(Bird.frame, Top.frame)) {
-    //    [self GameOver];
-    //}
-    
-    //if (CGRectIntersectsRect(Bird.frame, Bottom.frame)) {
-    //    [self GameOver];
-    //}
 }
 
 -(void)BirdMoving
