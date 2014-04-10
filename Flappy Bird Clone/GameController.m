@@ -55,7 +55,7 @@
 {
     RandomTopTunnelPosition = arc4random() %350;
     RandomTopTunnelPosition = RandomTopTunnelPosition - 228;
-    RandomBottomTunnelPosition = RandomTopTunnelPosition + 655;
+    RandomBottomTunnelPosition = RandomTopTunnelPosition + 700;
     
     TunnelTop.center = CGPointMake(340, RandomTopTunnelPosition);
     TunnelBottom.center = CGPointMake(340, RandomBottomTunnelPosition);
@@ -115,7 +115,7 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    BirdFlight = 30;
+    BirdFlight = 15;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
