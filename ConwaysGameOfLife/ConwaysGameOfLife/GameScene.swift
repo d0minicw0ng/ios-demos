@@ -89,6 +89,8 @@ class GameScene: SKScene {
                     tile.isAlive = true
                 } else if tile.numLivingNeighbors < 2 {
                     tile.isAlive = false
+                } else if tile.numLivingNeighbors > 3 {
+                    tile.isAlive = false
                 }
                 if tile.isAlive {
                     numAlive++
