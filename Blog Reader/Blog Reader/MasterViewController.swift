@@ -15,6 +15,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
+    
+    // NOTE: random images for table cell
+    var images:[String] = ["youtube.png", "chrome.png", "google.png"]
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -140,6 +143,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
         cell.textLabel!.text = object.valueForKey("title")!.description
         cell.detailTextLabel!.text = object.valueForKey("author")!.description
+        
+        var imageIndex = indexPath.row % 3
+        var imageFileName = images[imageIndex]
+        var image = UIImage(named: imageFileName)
+        cell.imageView?.image = image
+        
     }
 
     // MARK: - Fetched results controller

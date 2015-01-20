@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B129AC1B1A6E8C7F009F6A8C /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = B129AC1A1A6E8C7F009F6A8C /* google.png */; };
+		B129AC1D1A6E8CCA009F6A8C /* chrome.png in Resources */ = {isa = PBXBuildFile; fileRef = B129AC1C1A6E8CCA009F6A8C /* chrome.png */; };
+		B129AC1F1A6E8CE2009F6A8C /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = B129AC1E1A6E8CE2009F6A8C /* youtube.png */; };
 		B1FB683B1A6D49950036D545 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FB683A1A6D49950036D545 /* AppDelegate.swift */; };
 		B1FB683E1A6D49950036D545 /* Blog_Reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1FB683C1A6D49950036D545 /* Blog_Reader.xcdatamodeld */; };
 		B1FB68401A6D49950036D545 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FB683F1A6D49950036D545 /* MasterViewController.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B129AC1A1A6E8C7F009F6A8C /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
+		B129AC1C1A6E8CCA009F6A8C /* chrome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrome.png; sourceTree = "<group>"; };
+		B129AC1E1A6E8CE2009F6A8C /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube.png; sourceTree = "<group>"; };
 		B1FB68351A6D49950036D545 /* Blog Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blog Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1FB68391A6D49950036D545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1FB683A1A6D49950036D545 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +93,9 @@
 				B1FB68431A6D49950036D545 /* Main.storyboard */,
 				B1FB68461A6D49950036D545 /* Images.xcassets */,
 				B1FB68481A6D49950036D545 /* LaunchScreen.xib */,
+				B129AC1C1A6E8CCA009F6A8C /* chrome.png */,
+				B129AC1E1A6E8CE2009F6A8C /* youtube.png */,
+				B129AC1A1A6E8C7F009F6A8C /* google.png */,
 				B1FB683C1A6D49950036D545 /* Blog_Reader.xcdatamodeld */,
 				B1FB68381A6D49950036D545 /* Supporting Files */,
 			);
@@ -200,7 +209,10 @@
 			files = (
 				B1FB68451A6D49950036D545 /* Main.storyboard in Resources */,
 				B1FB684A1A6D49950036D545 /* LaunchScreen.xib in Resources */,
+				B129AC1B1A6E8C7F009F6A8C /* google.png in Resources */,
+				B129AC1F1A6E8CE2009F6A8C /* youtube.png in Resources */,
 				B1FB68471A6D49950036D545 /* Images.xcassets in Resources */,
+				B129AC1D1A6E8CCA009F6A8C /* chrome.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +427,7 @@
 				B1FB685B1A6D49950036D545 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B1FB685C1A6D49950036D545 /* Build configuration list for PBXNativeTarget "Blog ReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +436,7 @@
 				B1FB685E1A6D49950036D545 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
