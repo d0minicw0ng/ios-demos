@@ -23,6 +23,13 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
     }
+    
+    func fetchBlogPosts() -> NSArray {
+        var request = NSFetchRequest(entityName: "BlogPosts")
+        request.returnsObjectsAsFaults = false
+        var results = managedObjectContext!.executeFetchRequest(request, error: nil)! as NSArray
+        return results
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +45,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             if error != nil {
                 println(error)
             } else {
-                var request = NSFetchRequest(entityName: "BlogPosts")
-                request.returnsObjectsAsFaults = false
-                var results = managedObjectContext.executeFetchRequest(request, error: nil)
-                for result in results! {
+                var results = self.fetchBlogPosts() as NSArray
+                for result in results {
                     managedObjectContext.deleteObject(result as NSManagedObject)
                     managedObjectContext.save(nil)
                 }
@@ -49,23 +54,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                 let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
                 
                 var blogPost:AnyObject
-                var authorDictionary:AnyObject
-                var newBlogPost:NSManagedObject
                 for var i = 0; i < jsonResult["items"]?.count; i++ {
                     blogPost = jsonResult["items"]?[i] as NSDictionary
-                    authorDictionary = blogPost["author"] as NSDictionary
-                    
-                    newBlogPost = NSEntityDescription.insertNewObjectForEntityForName("BlogPosts", inManagedObjectContext: managedObjectContext) as NSManagedObject
-                    newBlogPost.setValue(authorDictionary["displayName"] as NSString, forKey: "author")
-                    newBlogPost.setValue(blogPost["content"] as NSString, forKey: "content")
-                    newBlogPost.setValue(blogPost["title"] as NSString, forKey: "title")
-                    newBlogPost.setValue(blogPost["published"] as NSString, forKey: "publishedDate")
-                    managedObjectContext.save(nil)
+                    self.createBlogPost(blogPost as NSDictionary)
                 }
                 
-                request = NSFetchRequest(entityName: "BlogPosts")
-                request.returnsObjectsAsFaults = false
-                results = managedObjectContext.executeFetchRequest(request, error: nil)
+                results = self.fetchBlogPosts() as NSArray
             }
         })
         task.resume()
@@ -75,29 +69,19 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
     }
+    
+    func createBlogPost(jsonObject: NSDictionary) -> Void {
+        var authorDictionary:AnyObject
+        var newBlogPost:NSManagedObject
+        authorDictionary = jsonObject["author"] as NSDictionary
+        
+        newBlogPost = NSEntityDescription.insertNewObjectForEntityForName("BlogPosts", inManagedObjectContext: managedObjectContext!) as NSManagedObject
+        newBlogPost.setValue(authorDictionary["displayName"] as NSString, forKey: "author")
+        newBlogPost.setValue(jsonObject["content"] as NSString, forKey: "content")
+        newBlogPost.setValue(jsonObject["title"] as NSString, forKey: "title")
+        newBlogPost.setValue(jsonObject["published"] as NSString, forKey: "publishedDate")
+        managedObjectContext!.save(nil)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    func insertNewObject(sender: AnyObject) {
-        let context = self.fetchedResultsController.managedObjectContext
-        let entity = self.fetchedResultsController.fetchRequest.entity!
-        let newManagedObject = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context) as NSManagedObject
-             
-        // If appropriate, configure the new managed object.
-        // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-        newManagedObject.setValue(NSDate(), forKey: "timeStamp")
-             
-        // Save the context.
-        var error: NSError? = nil
-        if !context.save(&error) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            //println("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        }
     }
 
     // MARK: - Segues
