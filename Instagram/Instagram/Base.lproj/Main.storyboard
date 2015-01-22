@@ -4,6 +4,51 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="74B-Zi-QZa">
+            <objects>
+                <tableViewController id="txj-bk-b7W" customClass="UserTableViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lZA-Ta-luK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="A86-Xx-OsE">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A86-Xx-OsE" id="ysg-Lb-glh">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="txj-bk-b7W" id="upf-1u-5JU"/>
+                            <outlet property="delegate" destination="txj-bk-b7W" id="45a-b4-aXb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="nlW-Ez-uhl"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JhQ-tK-oPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="187" y="-434"/>
+        </scene>
+        <!--NavController-->
+        <scene sceneID="Nhi-FZ-DR8">
+            <objects>
+                <navigationController title="NavController" id="2Oq-zs-KJD" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9nd-Cc-XMG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="txj-bk-b7W" kind="relationship" relationship="rootViewController" id="xsP-zT-jQJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j79-dI-94G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-272" y="-434"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -136,10 +181,12 @@
                         <outlet property="signUpLabel" destination="Hg1-ke-Fpv" id="vMN-W1-v0V"/>
                         <outlet property="signUpToggleButton" destination="NJQ-v2-bh6" id="SBu-fb-mKR"/>
                         <outlet property="username" destination="1VU-hz-HYX" id="KO7-hE-1OJ"/>
+                        <segue destination="2Oq-zs-KJD" kind="show" identifier="redirectToUserTable" id="Zq6-iL-s4V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-686" y="-434"/>
         </scene>
     </scenes>
 </document>
