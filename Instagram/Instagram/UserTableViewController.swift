@@ -13,7 +13,9 @@ class UserTableViewController: UITableViewController {
     var users = [String]()
     var following = [Bool]()
     
-    override func viewDidLoad() {
+    var refresher: UIRefreshControl!
+    
+    func loadUsers() {
         var query = PFUser.query()
         query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
             
@@ -39,15 +41,25 @@ class UserTableViewController: UITableViewController {
                         } else {
                             println(error)
                         }
-                        
+                        self.refresher.endRefreshing()
                     })
                 }
             }
         })
     }
     
-    override func didReceiveMemoryWarning() {
+    func refresh() {
+        loadUsers()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadUsers()
         
+        refresher = UIRefreshControl()
+        refresher.attributedTitle = NSAttributedString(string: "Pull to find new users!")
+        refresher.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refresher)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
