@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Users-->
         <scene sceneID="74B-Zi-QZa">
             <objects>
                 <tableViewController id="txj-bk-b7W" customClass="UserTableViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,11 +25,101 @@
                             <outlet property="delegate" destination="txj-bk-b7W" id="45a-b4-aXb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="nlW-Ez-uhl"/>
+                    <navigationItem key="navigationItem" title="Users" id="nlW-Ez-uhl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="qb9-Op-DN4">
+                            <connections>
+                                <segue destination="am8-76-Yt9" kind="show" id="Zrt-lT-yhU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JhQ-tK-oPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="187" y="-434"/>
+        </scene>
+        <!--Post Your Photo-->
+        <scene sceneID="uGj-Dv-HMO">
+            <objects>
+                <viewController title="Post Your Photo" id="am8-76-Yt9" customClass="postPhotoViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lUV-Ts-HKq"/>
+                        <viewControllerLayoutGuide type="bottom" id="nyZ-M5-1kJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qlg-wb-VtC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="zRi-mG-dmh">
+                                <rect key="frame" x="75" y="133" width="170" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="Aal-Df-ibK"/>
+                                    <constraint firstAttribute="height" constant="170" id="OPQ-ks-uH4"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gimme your #hashtags baybeh" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qef-50-WpP">
+                                <rect key="frame" x="25" y="396" width="270" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Xi4-9C-8V1"/>
+                                    <constraint firstAttribute="width" constant="270" id="qsh-8q-lcA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUp-vK-7wm">
+                                <rect key="frame" x="93" y="453" width="135" height="30"/>
+                                <color key="backgroundColor" red="0.46577888285503311" green="1" blue="0.42285081265413638" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gip-02-N87"/>
+                                    <constraint firstAttribute="width" constant="135" id="lTF-eh-mnR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Post your photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postPhoto:" destination="am8-76-Yt9" eventType="touchUpInside" id="CPI-Dz-SLp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQ8-Se-rvs">
+                                <rect key="frame" x="93" y="339" width="135" height="30"/>
+                                <color key="backgroundColor" red="0.61885046333959415" green="0.69447087872871816" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="727-j5-FzS"/>
+                                    <constraint firstAttribute="width" constant="135" id="qcE-Os-KHr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Choose an image">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="choosePhoto:" destination="am8-76-Yt9" eventType="touchUpInside" id="xNF-h7-soy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99745696610262069" green="1" blue="0.99903222072374198" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qef-50-WpP" firstAttribute="top" secondItem="oQ8-Se-rvs" secondAttribute="bottom" constant="27" id="607-7v-ihN"/>
+                            <constraint firstAttribute="centerX" secondItem="zRi-mG-dmh" secondAttribute="centerX" id="A5P-0A-MoU"/>
+                            <constraint firstItem="zRi-mG-dmh" firstAttribute="top" secondItem="lUV-Ts-HKq" secondAttribute="bottom" constant="69" id="AEm-5E-b1K"/>
+                            <constraint firstItem="tUp-vK-7wm" firstAttribute="top" secondItem="qef-50-WpP" secondAttribute="bottom" constant="27" id="JEV-Et-2wa"/>
+                            <constraint firstItem="oQ8-Se-rvs" firstAttribute="top" secondItem="zRi-mG-dmh" secondAttribute="bottom" constant="36" id="k47-SI-UXT"/>
+                            <constraint firstAttribute="centerX" secondItem="tUp-vK-7wm" secondAttribute="centerX" id="p1D-X3-XJL"/>
+                            <constraint firstAttribute="centerX" secondItem="oQ8-Se-rvs" secondAttribute="centerX" id="qAr-Yi-tRN"/>
+                            <constraint firstAttribute="centerX" secondItem="qef-50-WpP" secondAttribute="centerX" id="xyA-7c-Hgo"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="photoDescription" destination="qef-50-WpP" id="HqM-C5-NFZ"/>
+                        <outlet property="selectedPhoto" destination="zRi-mG-dmh" id="P7t-QK-wfc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XGl-9t-wZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="597" y="-434"/>
         </scene>
         <!--NavController-->
         <scene sceneID="Nhi-FZ-DR8">
@@ -189,4 +279,7 @@
             <point key="canvasLocation" x="-686" y="-434"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera_placeholder.png" width="170" height="170"/>
+    </resources>
 </document>

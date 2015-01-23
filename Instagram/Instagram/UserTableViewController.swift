@@ -85,6 +85,7 @@ class UserTableViewController: UITableViewController {
         var cell:UITableViewCell = self.tableView.cellForRowAtIndexPath(indexPath)!
         if cell.accessoryType == UITableViewCellAccessoryType.Checkmark {
             cell.accessoryType = UITableViewCellAccessoryType.None
+            // NOTE: class name should really be Follower...
             var query = PFQuery(className: "Followers")
             query.whereKey("follower", equalTo: PFUser.currentUser().username)
             query.whereKey("following", equalTo: cell.textLabel?.text)

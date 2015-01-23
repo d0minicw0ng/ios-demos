@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B101996A1A72AA6A00496AFE /* postPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10199691A72AA6A00496AFE /* postPhotoViewController.swift */; };
+		B101996C1A72AB8F00496AFE /* camera_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B101996B1A72AB8F00496AFE /* camera_placeholder.png */; };
 		B1415B791A6EA16600D72503 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1415B781A6EA16600D72503 /* AppDelegate.swift */; };
 		B1415B7B1A6EA16600D72503 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1415B7A1A6EA16600D72503 /* ViewController.swift */; };
 		B1415B7E1A6EA16600D72503 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1415B7C1A6EA16600D72503 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B10199691A72AA6A00496AFE /* postPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = postPhotoViewController.swift; path = ../postPhotoViewController.swift; sourceTree = "<group>"; };
+		B101996B1A72AB8F00496AFE /* camera_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_placeholder.png; sourceTree = "<group>"; };
 		B1415B731A6EA16600D72503 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1415B771A6EA16600D72503 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1415B781A6EA16600D72503 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,8 +139,10 @@
 				B1415B781A6EA16600D72503 /* AppDelegate.swift */,
 				B1415B7A1A6EA16600D72503 /* ViewController.swift */,
 				B1415B7C1A6EA16600D72503 /* Main.storyboard */,
+				B10199691A72AA6A00496AFE /* postPhotoViewController.swift */,
 				B19B37481A7141FE00860414 /* UserTableViewController.swift */,
 				B1415B7F1A6EA16600D72503 /* Images.xcassets */,
+				B101996B1A72AB8F00496AFE /* camera_placeholder.png */,
 				B1415B811A6EA16600D72503 /* LaunchScreen.xib */,
 				B1415B761A6EA16600D72503 /* Supporting Files */,
 				B1415BB21A6EA62C00D72503 /* Instagram-Bridging-Header.h */,
@@ -249,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B101996C1A72AB8F00496AFE /* camera_placeholder.png in Resources */,
 				B1415B7E1A6EA16600D72503 /* Main.storyboard in Resources */,
 				B1415B831A6EA16600D72503 /* LaunchScreen.xib in Resources */,
 				B1415B801A6EA16600D72503 /* Images.xcassets in Resources */,
@@ -272,6 +279,7 @@
 				B1415B7B1A6EA16600D72503 /* ViewController.swift in Sources */,
 				B19B37491A7141FF00860414 /* UserTableViewController.swift in Sources */,
 				B1415B791A6EA16600D72503 /* AppDelegate.swift in Sources */,
+				B101996A1A72AA6A00496AFE /* postPhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
