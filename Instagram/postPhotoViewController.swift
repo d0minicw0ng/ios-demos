@@ -100,4 +100,10 @@ class postPhotoViewController: UIViewController, UINavigationControllerDelegate,
         activityIndicator.stopAnimating()
         UIApplication.sharedApplication().endIgnoringInteractionEvents()
     }
+    
+    @IBAction func logOut(sender: AnyObject) {
+        PFUser.logOut()
+        self.performSegueWithIdentifier("logOut", sender: self)
+        
+    }
 }

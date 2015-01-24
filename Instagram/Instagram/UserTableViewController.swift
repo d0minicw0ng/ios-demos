@@ -24,7 +24,7 @@ class UserTableViewController: UITableViewController {
                 var user:PFUser = object as PFUser
                 var isFollowing:Bool = false
                 
-                if user.username != PFUser.currentUser().username {
+                if PFUser.currentUser() != nil && user.username != PFUser.currentUser().username {
                     self.users.append(user.username)
                     var query = PFQuery(className: "Followers")
                     query.whereKey("follower", equalTo: PFUser.currentUser().username)

@@ -29,6 +29,8 @@
 		B1415BAF1A6EA4BC00D72503 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1415BAE1A6EA4BC00D72503 /* libz.dylib */; };
 		B1415BB11A6EA4CB00D72503 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1415BB01A6EA4CB00D72503 /* libsqlite3.dylib */; };
 		B19B37491A7141FF00860414 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19B37481A7141FE00860414 /* UserTableViewController.swift */; };
+		B1A2A4FF1A73DBD900AE6D00 /* feedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A2A4FE1A73DBD900AE6D00 /* feedViewController.swift */; };
+		B1A2A5011A73DCAB00AE6D00 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A2A5001A73DCAB00AE6D00 /* FeedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		B1415BB01A6EA4CB00D72503 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B1415BB21A6EA62C00D72503 /* Instagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Instagram-Bridging-Header.h"; sourceTree = "<group>"; };
 		B19B37481A7141FE00860414 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		B1A2A4FE1A73DBD900AE6D00 /* feedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedViewController.swift; sourceTree = "<group>"; };
+		B1A2A5001A73DCAB00AE6D00 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 				B1415B781A6EA16600D72503 /* AppDelegate.swift */,
 				B1415B7A1A6EA16600D72503 /* ViewController.swift */,
 				B1415B7C1A6EA16600D72503 /* Main.storyboard */,
+				B1A2A5001A73DCAB00AE6D00 /* FeedItem.swift */,
+				B1A2A4FE1A73DBD900AE6D00 /* feedViewController.swift */,
 				B10199691A72AA6A00496AFE /* postPhotoViewController.swift */,
 				B19B37481A7141FE00860414 /* UserTableViewController.swift */,
 				B1415B7F1A6EA16600D72503 /* Images.xcassets */,
@@ -276,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A2A4FF1A73DBD900AE6D00 /* feedViewController.swift in Sources */,
 				B1415B7B1A6EA16600D72503 /* ViewController.swift in Sources */,
+				B1A2A5011A73DCAB00AE6D00 /* FeedItem.swift in Sources */,
 				B19B37491A7141FF00860414 /* UserTableViewController.swift in Sources */,
 				B1415B791A6EA16600D72503 /* AppDelegate.swift in Sources */,
 				B101996A1A72AA6A00496AFE /* postPhotoViewController.swift in Sources */,

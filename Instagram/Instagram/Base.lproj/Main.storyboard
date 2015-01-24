@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Users-->
@@ -26,6 +27,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="nlW-Ez-uhl">
+                        <barButtonItem key="leftBarButtonItem" title="Feed" id="4S5-qV-7jZ">
+                            <connections>
+                                <segue destination="at4-An-ela" kind="show" identifier="showFeed" id="t6U-Wo-4iq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="qb9-Op-DN4">
                             <connections>
                                 <segue destination="am8-76-Yt9" kind="show" id="Zrt-lT-yhU"/>
@@ -97,6 +103,22 @@
                                     <action selector="choosePhoto:" destination="am8-76-Yt9" eventType="touchUpInside" id="xNF-h7-soy"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cH-EC-OdW">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Logout" id="9X2-FD-rg8">
+                                        <connections>
+                                            <action selector="logOut:" destination="am8-76-Yt9" id="T3j-9h-jj7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="I5e-bm-chR"/>
+                                    <barButtonItem title="Feed" id="VvT-cg-TF5">
+                                        <connections>
+                                            <segue destination="at4-An-ela" kind="show" id="mIr-94-wUX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.99745696610262069" green="1" blue="0.99903222072374198" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -104,6 +126,9 @@
                             <constraint firstAttribute="centerX" secondItem="zRi-mG-dmh" secondAttribute="centerX" id="A5P-0A-MoU"/>
                             <constraint firstItem="zRi-mG-dmh" firstAttribute="top" secondItem="lUV-Ts-HKq" secondAttribute="bottom" constant="69" id="AEm-5E-b1K"/>
                             <constraint firstItem="tUp-vK-7wm" firstAttribute="top" secondItem="qef-50-WpP" secondAttribute="bottom" constant="27" id="JEV-Et-2wa"/>
+                            <constraint firstItem="8cH-EC-OdW" firstAttribute="leading" secondItem="Qlg-wb-VtC" secondAttribute="leadingMargin" constant="-16" id="baj-7W-BMr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8cH-EC-OdW" secondAttribute="trailing" constant="-16" id="dUN-Nc-to7"/>
+                            <constraint firstItem="nyZ-M5-1kJ" firstAttribute="top" secondItem="8cH-EC-OdW" secondAttribute="bottom" id="gMK-4w-rCB"/>
                             <constraint firstItem="oQ8-Se-rvs" firstAttribute="top" secondItem="zRi-mG-dmh" secondAttribute="bottom" constant="36" id="k47-SI-UXT"/>
                             <constraint firstAttribute="centerX" secondItem="tUp-vK-7wm" secondAttribute="centerX" id="p1D-X3-XJL"/>
                             <constraint firstAttribute="centerX" secondItem="oQ8-Se-rvs" secondAttribute="centerX" id="qAr-Yi-tRN"/>
@@ -115,11 +140,62 @@
                     <connections>
                         <outlet property="photoDescription" destination="qef-50-WpP" id="HqM-C5-NFZ"/>
                         <outlet property="selectedPhoto" destination="zRi-mG-dmh" id="P7t-QK-wfc"/>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="logOut" id="tfT-ib-GlI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XGl-9t-wZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="597" y="-434"/>
+            <point key="canvasLocation" x="610" y="-434"/>
+        </scene>
+        <!--Feed View Controller-->
+        <scene sceneID="7sr-rL-XYy">
+            <objects>
+                <tableViewController id="at4-An-ela" customClass="feedViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="u9j-P3-r5e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedItem" rowHeight="250" id="KG1-jr-dH7" customClass="FeedItem" customModule="Instagram" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KG1-jr-dH7" id="2El-Pt-MJH">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wUe-zh-aqb">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvF-af-PF5">
+                                            <rect key="frame" x="8" y="210" width="95" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NqT-bb-uEm">
+                                            <rect key="frame" x="111" y="210" width="209" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="photo" destination="wUe-zh-aqb" id="ANE-6S-ebg"/>
+                                    <outlet property="photoDescription" destination="NqT-bb-uEm" id="JVd-GN-F6c"/>
+                                    <outlet property="username" destination="gvF-af-PF5" id="bnd-RF-JM5"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="at4-An-ela" id="Di9-dR-ZoX"/>
+                            <outlet property="delegate" destination="at4-An-ela" id="8du-ZW-ehc"/>
+                        </connections>
+                    </tableView>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t7S-uP-fZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="208"/>
         </scene>
         <!--NavController-->
         <scene sceneID="Nhi-FZ-DR8">
@@ -282,4 +358,7 @@
     <resources>
         <image name="camera_placeholder.png" width="170" height="170"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="t6U-Wo-4iq"/>
+    </inferredMetricsTieBreakers>
 </document>
