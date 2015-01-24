@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Tinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zd-fS-p9q">
+                                <rect key="frame" x="32" y="261" width="257" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="257" id="bFs-5M-lpU"/>
+                                    <constraint firstAttribute="height" constant="46" id="yZA-Dy-Q9k"/>
+                                </constraints>
+                                <state key="normal" image="fb_login.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fbLogin:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FN1-id-S7R"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="4zd-fS-p9q" secondAttribute="centerY" id="0qE-Jy-jrk"/>
+                            <constraint firstAttribute="centerX" secondItem="4zd-fS-p9q" secondAttribute="centerX" id="4uj-UB-aWm"/>
+                            <constraint firstItem="4zd-fS-p9q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="16" id="56r-aG-W7e"/>
+                            <constraint firstItem="4zd-fS-p9q" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="241" id="QZD-DS-Y5Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4zd-fS-p9q" secondAttribute="trailing" constant="15" id="bXh-Bb-h3m"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="56r-aG-W7e"/>
+                                <exclude reference="QZD-DS-Y5Q"/>
+                                <exclude reference="bXh-Bb-h3m"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="fb_login.png" width="202" height="46"/>
+    </resources>
+</document>
