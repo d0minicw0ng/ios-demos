@@ -13,10 +13,11 @@ class ViewController: UIViewController {
         let permissions = ["public_profile"]
         PFFacebookUtils.logInWithPermissions(permissions, {
             (user: PFUser!, error: NSError!) -> Void in
+            
             if user == nil {
-                NSLog("Uh oh. The user cancelled the Facebook login.")
+                self.showAlert("Facebook Login Failed", error: error.localizedDescription as String)
             } else if user.isNew {
-                NSLog("User signed up and logged in through Facebook!")
+                self.performSegueWithIdentifier("signUp", sender: self)
             } else {
                 NSLog("User logged in through Facebook!")
             }
@@ -25,12 +26,22 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if PFUser.currentUser() != nil {
+            // redirect to swipe view.
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func showAlert(title: String, error: String) {
+        var alert = UIAlertController(title: title, message: error, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     
