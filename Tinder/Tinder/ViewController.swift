@@ -19,7 +19,7 @@ class ViewController: UIViewController {
             } else if user.isNew {
                 self.performSegueWithIdentifier("signUp", sender: self)
             } else {
-                NSLog("User logged in through Facebook!")
+                self.performSegueWithIdentifier("redirectToTinder", sender: self)
             }
         })
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B130614F1A753C9000E67D28 /* TinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B130614E1A753C9000E67D28 /* TinderViewController.swift */; };
+		B13061511A754BFE00E67D28 /* female_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B13061501A754BFE00E67D28 /* female_placeholder.png */; };
 		B1749A0C1A74CC9D007CDF22 /* tinder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1749A0B1A74CC9D007CDF22 /* tinder.jpg */; };
 		B1749A0E1A74D335007CDF22 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B1749A0D1A74D335007CDF22 /* logo.png */; };
 		B1749A101A74D591007CDF22 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1749A0F1A74D591007CDF22 /* SignUpViewController.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		B130614E1A753C9000E67D28 /* TinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinderViewController.swift; sourceTree = "<group>"; };
+		B13061501A754BFE00E67D28 /* female_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female_placeholder.png; sourceTree = "<group>"; };
 		B1749A0B1A74CC9D007CDF22 /* tinder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tinder.jpg; sourceTree = "<group>"; };
 		B1749A0D1A74D335007CDF22 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		B1749A0F1A74D591007CDF22 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				B1A2A5371A73F64000AE6D00 /* ParseFacebookUtils.framework */,
 				B1A2A5301A73F1D200AE6D00 /* FacebookSDK.framework */,
 				B1A2A5101A73EFCB00AE6D00 /* AppDelegate.swift */,
+				B13061501A754BFE00E67D28 /* female_placeholder.png */,
 				B1749A0B1A74CC9D007CDF22 /* tinder.jpg */,
 				B1749A0D1A74D335007CDF22 /* logo.png */,
 				B1A2A54F1A73FB7600AE6D00 /* fb_login.png */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1A2A5161A73EFCB00AE6D00 /* Main.storyboard in Resources */,
+				B13061511A754BFE00E67D28 /* female_placeholder.png in Resources */,
 				B1A2A51B1A73EFCB00AE6D00 /* LaunchScreen.xib in Resources */,
 				B1749A0E1A74D335007CDF22 /* logo.png in Resources */,
 				B1A2A5181A73EFCB00AE6D00 /* Images.xcassets in Resources */,
