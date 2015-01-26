@@ -26,25 +26,32 @@ class TinderViewController: UIViewController {
                 
                 var query:PFQuery = PFUser.query()
                 query.whereKey("location", nearGeoPoint: geopoint)
-                //query.whereKey("username", notEqualTo: currentUser.username)
-                //query.whereKey("gender", equalTo: currentUser["interestedIn"])
                 query.limit = 10;
                 query.findObjectsInBackgroundWithBlock({ (candidates: [AnyObject]!, error: NSError!) -> Void in
                     
                     if error == nil {
+                        
+                        var accepted = PFUser.currentUser()["accepted"] as [String]
+                        var rejected = PFUser.currentUser()["rejected"] as [String]
+                        
                         for candidate in candidates {
                             let candidateGender = candidate["gender"] as? NSString
+                            let candidateUsername = candidate["username"] as? NSString
                             let currentUserPreferredGender = currentUser["interestedIn"] as? NSString
-                            if candidateGender == currentUserPreferredGender && currentUser.username != candidate.username {
+                            if candidateGender! == currentUserPreferredGender && currentUser.username != candidate.username && !contains(accepted, candidateUsername!) &&
+                                !contains(rejected, candidateUsername!) {
                                 
-                                println("We have a candidate!")
                                 self.usernames.append(candidate.username)
                                 self.userImages.append(candidate["image"] as NSData)
                             }
 
                         }
                         
-                        self.addCandidateImage(self.userImages[0])
+                        if self.userImages.count > 0 {
+                            self.addCandidateImage(self.userImages[0])
+                        } else {
+                            self.findingMoreUsers.alpha = 1
+                        }
                     }
                 })
                 
@@ -106,16 +113,20 @@ class TinderViewController: UIViewController {
         var stretch:CGAffineTransform = CGAffineTransformScale(rotation, scale, scale)
         candidateImage.transform = stretch
         
-        if candidateImage.center.x < 100 {
-            println("not chosen")
-        } else {
-            println("chosen")
-        }
-        
         if gestureRecognizer.state == UIGestureRecognizerState.Ended {
+            var currentUser = PFUser.currentUser()
+            if candidateImage.center.x < 100 {
+                currentUser.addUniqueObject(self.usernames[self.currentCandidate], forKey: "rejected")
+                currentUser.save()
+                currentCandidate++
+            } else if candidateImage.center.x > self.view.bounds.width - 100 {
+                currentUser.addUniqueObject(self.usernames[self.currentCandidate], forKey: "accepted")
+                currentUser.save()
+                currentCandidate++
+            }
+
             candidateImage.removeFromSuperview()
             xFromCenter = 0
-            currentCandidate++
             if currentCandidate < self.userImages.count {
                 addCandidateImage(self.userImages[currentCandidate])
             } else {
