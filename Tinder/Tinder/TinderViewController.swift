@@ -30,9 +30,8 @@ class TinderViewController: UIViewController {
                 query.findObjectsInBackgroundWithBlock({ (candidates: [AnyObject]!, error: NSError!) -> Void in
                     
                     if error == nil {
-                        
-                        var accepted = PFUser.currentUser()["accepted"] as [String]
-                        var rejected = PFUser.currentUser()["rejected"] as [String]
+                        var accepted = currentUser["accepted"] as [String]
+                        var rejected = currentUser["rejected"] as [String]
                         
                         for candidate in candidates {
                             let candidateGender = candidate["gender"] as? NSString

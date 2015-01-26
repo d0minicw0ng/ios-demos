@@ -89,6 +89,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41I-Az-8zF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Find Your Match!" id="hF5-f6-rZj">
+                                        <barButtonItem key="rightBarButtonItem" title="Contacts" id="e8h-JO-1m9">
+                                            <connections>
+                                                <segue destination="vjA-oQ-xRy" kind="show" id="Fkg-IX-DQS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -112,6 +124,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHM-h1-HRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="679" y="598"/>
+        </scene>
+        <!--Contacts View Controller-->
+        <scene sceneID="60R-bN-gGL">
+            <objects>
+                <tableViewController id="vjA-oQ-xRy" customClass="ContactsViewController" customModule="Tinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zrp-9t-QYS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="ATo-i9-TNk">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Your Potential Dates..." id="lGy-M1-kjW">
+                                    <barButtonItem key="backBarButtonItem" title="Back" id="TM2-Dn-RUj"/>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contact" id="49M-DL-8EY">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="49M-DL-8EY" id="X9Q-1f-ZxB">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vjA-oQ-xRy" id="syV-No-hpq"/>
+                            <outlet property="delegate" destination="vjA-oQ-xRy" id="Hvy-Ya-qPj"/>
+                        </connections>
+                    </tableView>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="57P-dE-rWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="598"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="sKX-qo-o6m">
@@ -175,11 +224,12 @@
                     <connections>
                         <outlet property="fbProfileImage" destination="5Mh-fh-kfo" id="FDf-RQ-6YN"/>
                         <outlet property="interestedIn" destination="fGe-cN-bu1" id="6Gn-OL-n4n"/>
+                        <segue destination="DSs-KS-7k4" kind="show" identifier="showTinderAfterSignUp" id="d83-Do-zpQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYt-Qo-cyu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="679" y="-40"/>
+            <point key="canvasLocation" x="650" y="-130"/>
         </scene>
     </scenes>
     <resources>
@@ -187,4 +237,7 @@
         <image name="logo.png" width="800" height="450"/>
         <image name="tinder.jpg" width="728" height="375"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="d83-Do-zpQ"/>
+    </inferredMetricsTieBreakers>
 </document>

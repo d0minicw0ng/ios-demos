@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBAction func fbLogin(sender: AnyObject) {
-        let permissions = ["public_profile"]
+        let permissions = ["email", "public_profile"]
         PFFacebookUtils.logInWithPermissions(permissions, {
             (user: PFUser!, error: NSError!) -> Void in
             
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if PFUser.currentUser() != nil {
-            // redirect to swipe view.
+            self.performSegueWithIdentifier("redirectToTinder", sender: self)
         }
     }
 

@@ -21,6 +21,7 @@ class SignUpViewController: UIViewController {
         var currentUser = PFUser.currentUser()
         currentUser["interestedIn"] = interestedInGender
         currentUser.save()
+        self.performSegueWithIdentifier("showTinderAfterSignUp", sender: self)
     }
     
     override func viewDidLoad() {
@@ -43,6 +44,9 @@ class SignUpViewController: UIViewController {
                 
                 currentUser["gender"] = result["gender"]
                 currentUser["name"] = result["name"]
+                currentUser["email"] = result["email"]
+                currentUser["accepted"] = []
+                currentUser["rejected"] = []
                 currentUser.save()
             })
         })
