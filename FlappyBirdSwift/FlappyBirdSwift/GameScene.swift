@@ -8,11 +8,20 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene,SKPhysicsContactDelegate {
     var bird = SKSpriteNode()
     var background = SKSpriteNode()
     
+    let birdGroup:UInt32 = 1
+    let objectGroup:UInt32 = 2
+    
+    var gameOver = 0
+    var movingObjects = SKNode()
+    
     override func didMoveToView(view: SKView) {
+        self.physicsWorld.contactDelegate = self
+        self.physicsWorld.gravity = CGVectorMake(0, -5)
+        self.addChild(movingObjects)
         createBackground()
         createBird()
     }
@@ -29,7 +38,7 @@ class GameScene: SKScene {
             background.size.height = self.frame.height
             
             background.runAction(moveBackgroundForever)
-            self.addChild(background)
+            movingObjects.addChild(background)
         }
     }
     
@@ -45,6 +54,9 @@ class GameScene: SKScene {
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2)
         bird.physicsBody?.dynamic = true
         bird.physicsBody?.allowsRotation = false
+        bird.physicsBody?.categoryBitMask = birdGroup
+        bird.physicsBody?.collisionBitMask = objectGroup
+        bird.physicsBody?.contactTestBitMask = objectGroup
         bird.zPosition = 10
         self.addChild(bird)
         
@@ -53,43 +65,52 @@ class GameScene: SKScene {
         ground.position = CGPointMake(0, 0)
         ground.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.frame.size.width, 1))
         ground.physicsBody?.dynamic = false
+        ground.physicsBody?.categoryBitMask = objectGroup
         self.addChild(ground)
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: Selector("createPipes"), userInfo: nil, repeats: true)
     }
     
     func createPipes() {
-        let gapHeight = bird.size.height * 4
-        var movementAmount = arc4random() % UInt32(self.frame.size.height / 2)
-        var pipeOffset = CGFloat(movementAmount) - self.frame.size.height / 4
-        
-        var movePipes = SKAction.moveByX(-self.frame.size.width * 2, y: 0, duration: NSTimeInterval(self.frame.size.width / 100))
-        var removePipes = SKAction.removeFromParent()
-        var moveAndRemovePipes = SKAction.sequence([movePipes, removePipes])
-        
-        // pipe at the top
-        var pipeOneTexture = SKTexture(imageNamed: "images/pipe1.png")
-        var pipeOne = SKSpriteNode(texture: pipeOneTexture)
-        pipeOne.position = CGPoint(x: CGRectGetMidX(self.frame) + self.frame.size.width, y: CGRectGetMidY(self.frame) + pipeOne.size.height / 2 + gapHeight / 2 + pipeOffset)
-        pipeOne.runAction(moveAndRemovePipes)
-        pipeOne.physicsBody = SKPhysicsBody(rectangleOfSize: pipeOne.size)
-        pipeOne.physicsBody?.dynamic = false
-        self.addChild(pipeOne)
-        
-        // pipe at the bottom
-        var pipeTwoTexture = SKTexture(imageNamed: "images/pipe2.png")
-        var pipeTwo = SKSpriteNode(texture: pipeTwoTexture)
-        pipeTwo.position = CGPoint(x: CGRectGetMidX(self.frame) + self.frame.size.width, y: CGRectGetMidY(self.frame) - pipeTwo.size.height / 2 - gapHeight / 2 + pipeOffset)
-        pipeTwo.runAction(moveAndRemovePipes)
-        pipeTwo.physicsBody = SKPhysicsBody(rectangleOfSize: pipeTwo.size)
-        pipeTwo.physicsBody?.dynamic = false
+        if gameOver == 0 {
+            let gapHeight = bird.size.height * 4
+            var movementAmount = arc4random() % UInt32(self.frame.size.height / 2)
+            var pipeOffset = CGFloat(movementAmount) - self.frame.size.height / 4
+            
+            var movePipes = SKAction.moveByX(-self.frame.size.width * 2, y: 0, duration: NSTimeInterval(self.frame.size.width / 100))
+            var removePipes = SKAction.removeFromParent()
+            var moveAndRemovePipes = SKAction.sequence([movePipes, removePipes])
+            
+            // pipe at the top
+            var pipeOneTexture = SKTexture(imageNamed: "images/pipe1.png")
+            var pipeOne = SKSpriteNode(texture: pipeOneTexture)
+            pipeOne.position = CGPoint(x: CGRectGetMidX(self.frame) + self.frame.size.width, y: CGRectGetMidY(self.frame) + pipeOne.size.height / 2 + gapHeight / 2 + pipeOffset)
+            pipeOne.runAction(moveAndRemovePipes)
+            pipeOne.physicsBody = SKPhysicsBody(rectangleOfSize: pipeOne.size)
+            pipeOne.physicsBody?.dynamic = false
+            pipeOne.physicsBody?.categoryBitMask = objectGroup
+            movingObjects.addChild(pipeOne)
+            
+            // pipe at the bottom
+            var pipeTwoTexture = SKTexture(imageNamed: "images/pipe2.png")
+            var pipeTwo = SKSpriteNode(texture: pipeTwoTexture)
+            pipeTwo.position = CGPoint(x: CGRectGetMidX(self.frame) + self.frame.size.width, y: CGRectGetMidY(self.frame) - pipeTwo.size.height / 2 - gapHeight / 2 + pipeOffset)
+            pipeTwo.runAction(moveAndRemovePipes)
+            pipeTwo.physicsBody = SKPhysicsBody(rectangleOfSize: pipeTwo.size)
+            pipeTwo.physicsBody?.dynamic = false
+            pipeTwo.physicsBody?.categoryBitMask = objectGroup
 
-        self.addChild(pipeTwo)
-
+            movingObjects.addChild(pipeTwo)
+        }
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        gameOver = 1
+        movingObjects.speed = 0
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        for touch: AnyObject in touches {
+        if gameOver == 0 {
             bird.physicsBody?.velocity = CGVectorMake(0, 0)
             bird.physicsBody?.applyImpulse(CGVectorMake(0, 50))
         }
