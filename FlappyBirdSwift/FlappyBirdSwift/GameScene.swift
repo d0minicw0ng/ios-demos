@@ -12,11 +12,18 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var bird = SKSpriteNode()
     var background = SKSpriteNode()
     
+    var score = 0
+    var scoreLabel = SKLabelNode()
+    
     let birdGroup:UInt32 = 1
+    let gapGroup:UInt32 = 0 << 3
     let objectGroup:UInt32 = 2
     
     var gameOver = 0
+    var gameOverLabel = SKLabelNode()
     var movingObjects = SKNode()
+    
+    var labelHolder = SKSpriteNode()
     
     override func didMoveToView(view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -24,6 +31,14 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         self.addChild(movingObjects)
         createBackground()
         createBird()
+        self.addChild(labelHolder)
+        
+        scoreLabel.fontName = "Helvetica"
+        scoreLabel.fontSize = 60
+        scoreLabel.text = "0"
+        scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height - 70)
+        scoreLabel.zPosition = 9
+        self.addChild(scoreLabel)
     }
     
     func createBackground() {
@@ -101,18 +116,53 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             pipeTwo.physicsBody?.categoryBitMask = objectGroup
 
             movingObjects.addChild(pipeTwo)
+            
+            // score
+            var gap = SKNode()
+            gap.position = CGPoint(x: CGRectGetMidX(self.frame) + self.frame.size.width, y: CGRectGetMidY(self.frame) + pipeOffset)
+            gap.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.frame.size.width, gapHeight))
+            gap.runAction(moveAndRemovePipes)
+            gap.physicsBody?.dynamic = false
+            gap.physicsBody?.collisionBitMask = gapGroup
+            gap.physicsBody?.categoryBitMask = gapGroup
+            gap.physicsBody?.contactTestBitMask = birdGroup
+            movingObjects.addChild(gap)
         }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        gameOver = 1
-        movingObjects.speed = 0
+        if contact.bodyA.categoryBitMask == gapGroup || contact.bodyB.categoryBitMask == gapGroup {
+            score++
+            scoreLabel.text = "\(score)"
+        } else {
+            if gameOver == 0 {
+                gameOver = 1
+                movingObjects.speed = 0
+                
+                gameOverLabel.fontName = "Helvetica"
+                gameOverLabel.fontSize = 30
+                gameOverLabel.text = "Game over! Tap to play again"
+                gameOverLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+                labelHolder.addChild(gameOverLabel)
+            }
+        }
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if gameOver == 0 {
             bird.physicsBody?.velocity = CGVectorMake(0, 0)
             bird.physicsBody?.applyImpulse(CGVectorMake(0, 50))
+        } else {
+            score = 0
+            scoreLabel.text = "0"
+            movingObjects.removeAllChildren()
+            createBackground()
+            bird.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+            bird.physicsBody?.velocity = CGVectorMake(0, 0)
+            bird.physicsBody?.applyImpulse(CGVectorMake(0, 50))
+            labelHolder.removeAllChildren()
+            gameOver = 0
+            movingObjects.speed = 1
         }
     }
    
