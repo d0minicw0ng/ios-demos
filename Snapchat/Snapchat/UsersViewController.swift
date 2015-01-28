@@ -14,6 +14,11 @@ class UsersViewController: UITableViewController, UINavigationControllerDelegate
     var timer = NSTimer()
     let SNAPTAG = 3
     
+    var timeLeft = 5
+    var timeLeftLabel = UILabel()
+    var timeLeftTimer = NSTimer()
+    var hasTimer = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var query = PFUser.query()
@@ -32,20 +37,26 @@ class UsersViewController: UITableViewController, UINavigationControllerDelegate
         if PFUser.currentUser() != nil {
             query.whereKey("recipient", equalTo: PFUser.currentUser().username)
             query.findObjectsInBackgroundWithBlock { (snaps: [AnyObject]!, error: NSError!) -> Void in
+                
                 if snaps.count == 0 {
                     self.removeSnap()
+                    self.timeLeftLabel.removeFromSuperview()
+                    self.timeLeftTimer.invalidate()
+                    self.hasTimer = false
                 } else {
                     for snap in snaps {
                         var snapView:PFImageView = PFImageView()
                         snapView.file = snap["image"] as PFFile
                         snapView.loadInBackground({ (photo, error) -> Void in
                             if error == nil {
-
                                 var displayedImage = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
                                 displayedImage.image = photo
                                 displayedImage.tag = self.SNAPTAG
                                 self.removeSnap()
                                 self.view.addSubview(displayedImage)
+                                if !self.hasTimer {
+                                    self.createTimer()
+                                }
                                 
                                 self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("fetchSnap"), userInfo: nil, repeats: false)
                                 
@@ -60,6 +71,25 @@ class UsersViewController: UITableViewController, UINavigationControllerDelegate
     
     @IBAction func getNewSnaps(sender: AnyObject) {
         fetchSnap()
+    }
+    
+    func createTimer() {
+        self.timeLeftLabel = UILabel(frame: CGRectMake(self.view.frame.width - 40, 40, 30, 30))
+        self.timeLeftLabel.textColor = UIColor.whiteColor()
+        self.timeLeftLabel.text = "\(self.timeLeft)"
+        self.timeLeftLabel.layer.zPosition = 10
+        self.view.addSubview(self.timeLeftLabel)
+        self.timeLeftTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("decrementTimeLeft"), userInfo: nil, repeats: true)
+        self.hasTimer = true
+    }
+    
+    func decrementTimeLeft() {
+        if self.timeLeft >= 1 {
+            self.timeLeft--
+        } else {
+            self.timeLeft = 5
+        }
+        self.timeLeftLabel.text = "\(self.timeLeft)"
     }
     
     func removeSnap() {
