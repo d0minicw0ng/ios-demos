@@ -8,8 +8,9 @@
 
 import UIKit
 
-class UsersViewController: UITableViewController {
+class UsersViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var users = [String]()
+    var recipient = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,29 @@ class UsersViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("user") as UITableViewCell
         cell.textLabel?.text = self.users[indexPath.row]
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.recipient = indexPath.row
+        pickImage()
+    }
+    
+    func pickImage() {
+        var image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        image.allowsEditing = false
+        self.presentViewController(image, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        var snap = PFObject(className: "Snap")
+        snap["image"] = PFFile(name: "image.jpg", data: UIImageJPEGRepresentation(image, 0.5))
+        snap["sender"] = PFUser.currentUser().username
+        snap["recipient"] = self.users[self.recipient]
+        snap.save()
     }
 }
 

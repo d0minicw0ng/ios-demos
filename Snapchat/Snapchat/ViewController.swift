@@ -18,12 +18,10 @@ class ViewController: UIViewController {
                 if error == nil {
                     self.performSegueWithIdentifier("signedIn", sender: self)
                 } else {
-                    println("no user found")
                     var newUser = PFUser()
                     newUser.username = self.username.text
                     newUser.password = "password"
                     newUser.signUpInBackgroundWithBlock { (succeeded: Bool!, error: NSError!) -> Void in
-                        println("signed user up")
                         
                         if error == nil {
                             self.performSegueWithIdentifier("signedIn", sender: self)
