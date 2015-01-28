@@ -28,6 +28,7 @@
 		B16BEA9F1A7917AC0026E93B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B16BEA9E1A7917AC0026E93B /* libsqlite3.dylib */; };
 		B16BEAA41A7918AF0026E93B /* snapchat.png in Resources */ = {isa = PBXBuildFile; fileRef = B16BEAA31A7918AF0026E93B /* snapchat.png */; };
 		B16BEAA61A791EB70026E93B /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BEAA51A791EB70026E93B /* UsersViewController.swift */; };
+		B16BEAA81A7932B60026E93B /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16BEAA71A7932B60026E93B /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		B16BEAA01A7917CF0026E93B /* Snapchat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Snapchat-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		B16BEAA31A7918AF0026E93B /* snapchat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapchat.png; sourceTree = "<group>"; };
 		B16BEAA51A791EB70026E93B /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		B16BEAA71A7932B60026E93B /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			files = (
 				B16BEA9F1A7917AC0026E93B /* libsqlite3.dylib in Frameworks */,
 				B16BEA9D1A7917A70026E93B /* libz.dylib in Frameworks */,
+				B16BEAA81A7932B60026E93B /* ParseUI.framework in Frameworks */,
 				B16BEA9B1A7917A20026E93B /* SystemConfiguration.framework in Frameworks */,
 				B16BEA991A7917900026E93B /* StoreKit.framework in Frameworks */,
 				B16BEA971A79178A0026E93B /* Security.framework in Frameworks */,
@@ -105,6 +108,7 @@
 			children = (
 				B16BEA9E1A7917AC0026E93B /* libsqlite3.dylib */,
 				B16BEA9C1A7917A60026E93B /* libz.dylib */,
+				B16BEAA71A7932B60026E93B /* ParseUI.framework */,
 				B16BEA9A1A7917A20026E93B /* SystemConfiguration.framework */,
 				B16BEA981A7917900026E93B /* StoreKit.framework */,
 				B16BEA961A79178A0026E93B /* Security.framework */,
@@ -480,6 +484,7 @@
 				B16BEA801A7916EF0026E93B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B16BEA811A7916EF0026E93B /* Build configuration list for PBXNativeTarget "SnapchatTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +493,7 @@
 				B16BEA831A7916EF0026E93B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
