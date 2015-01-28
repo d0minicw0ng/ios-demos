@@ -69,6 +69,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Your Friends" id="0Xn-yd-s0T">
+                                    <barButtonItem key="leftBarButtonItem" systemItem="play" id="v36-gA-dv6">
+                                        <connections>
+                                            <action selector="getNewSnaps:" destination="EUm-Qc-OKR" id="9YD-Gc-dIu"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" title="Logout" id="a7l-YY-ru2">
                                         <connections>
                                             <segue destination="vXZ-lx-hvc" kind="show" identifier="signedOut" id="Xld-IU-Ybv"/>

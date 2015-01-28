@@ -24,48 +24,42 @@ class UsersViewController: UITableViewController, UINavigationControllerDelegate
             }
             self.tableView.reloadData()
         })
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("checkForSnaps"), userInfo: nil, repeats: true)
     }
     
-    func checkForSnaps() {
+    func fetchSnap() {
         var query = PFQuery(className: "Snap")
+        query.limit = 1
         if PFUser.currentUser() != nil {
             query.whereKey("recipient", equalTo: PFUser.currentUser().username)
             query.findObjectsInBackgroundWithBlock { (snaps: [AnyObject]!, error: NSError!) -> Void in
-                for snap in snaps {
-                    var snapView:PFImageView = PFImageView()
-                    snapView.file = snap["image"] as PFFile
-                    snapView.loadInBackground({ (photo, error) -> Void in
-                        
-                        if error == nil {
-                            var senderUsername = snap["sender"] as String
-                            var alert = UIAlertController(title: "New Snap from \(senderUsername)!", message: "Tap below to view!", preferredStyle: UIAlertControllerStyle.Alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                                
-                                var backgroundView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
-                                backgroundView.backgroundColor = UIColor.blackColor()
-                                backgroundView.alpha = 0.8
-                                backgroundView.tag = self.SNAPTAG
-                                self.view.addSubview(backgroundView)
-                                
+                if snaps.count == 0 {
+                    self.removeSnap()
+                } else {
+                    for snap in snaps {
+                        var snapView:PFImageView = PFImageView()
+                        snapView.file = snap["image"] as PFFile
+                        snapView.loadInBackground({ (photo, error) -> Void in
+                            if error == nil {
+
                                 var displayedImage = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
                                 displayedImage.image = photo
-                                displayedImage.contentMode = .ScaleAspectFit
                                 displayedImage.tag = self.SNAPTAG
+                                self.removeSnap()
                                 self.view.addSubview(displayedImage)
                                 
-                                self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("removeSnap"), userInfo: nil, repeats: false)
+                                self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("fetchSnap"), userInfo: nil, repeats: false)
                                 
-                                snap.delete()                                
-                            }))
-                            
-                            self.presentViewController(alert, animated: true, completion: nil)
-                        }
-                    })
+                                snap.delete()
+                            }
+                        })
+                    }
                 }
             }
         }
+    }
+    
+    @IBAction func getNewSnaps(sender: AnyObject) {
+        fetchSnap()
     }
     
     func removeSnap() {
